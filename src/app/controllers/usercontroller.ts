@@ -87,7 +87,7 @@ export class UserController {
       } else {
         res.json({
           status: "Success",
-          message: "Profile Updated",
+          message: "Profile Updated !",
           data: result,
         });
       }
