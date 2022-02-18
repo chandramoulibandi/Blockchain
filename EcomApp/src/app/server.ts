@@ -8,6 +8,8 @@ import * as bodyparser from 'body-parser';
 import {mongoConnect} from './db/db';
 import helmet  from 'helmet';
 import * as compression from 'compression';
+import * as dotenv from "dotenv";
+
 
 var app = express();
 app.use(helmet());
