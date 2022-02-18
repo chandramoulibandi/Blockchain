@@ -81,10 +81,12 @@ export class UserController {
 
   static getProfile(req: Request, res: Response, next: NextFunction) {
     const userid = req.body.userId;
-    User.findById(userid, (err: Errback, result: any) => {
+    //console.log(userid);
+    User.find((err: Errback, result: any) => {
       if (err) {
         res.status(500).json({ status: "failed", message: err });
       } else {
+        console.log(result);
         res.json({
           status: "Success",
           message: "Profile Updated !",
