@@ -6,8 +6,12 @@ import {
 } from "./routes/index";
 import * as bodyparser from 'body-parser';
 import {mongoConnect} from './db/db';
+import helmet  from 'helmet';
+import * as compression from 'compression';
 
 var app = express();
+app.use(helmet());
+app.use(compression());
 const port = 3000;
 
 
@@ -17,7 +21,7 @@ app.use("/user", userRoute);
 app.use("/product", productRoute);
 app.use("/order", orderRoute);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
   mongoConnect.connection();
   console.log(`Example app listening on port ${port}`);
 });
