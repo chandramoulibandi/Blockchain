@@ -55,7 +55,7 @@ export class UserController {
 
   static updateProfile(req: Request, res: Response, next: NextFunction) {
    
-    const userid = req.body.userid;
+    const userid = req.body.userId;
     User.findByIdAndUpdate(
       userid,
       {
@@ -80,7 +80,7 @@ export class UserController {
   }
 
   static getProfile(req: Request, res: Response, next: NextFunction) {
-    const userid = req.body.userid;
+    const userid = req.body.userId;
     User.findById(userid, (err: Errback, result: any) => {
       if (err) {
         res.status(500).json({ status: "failed", message: err });
