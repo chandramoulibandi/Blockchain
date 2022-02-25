@@ -7,29 +7,7 @@ export class OrderController {
 
     static placeOrder(req: Request, res: Response, next: NextFunction) {
      
-        console.log(req.body);
-        req.body ={
-            "userId": "620fd1151f18076f912503d1",
-            "shippingAddress": {
-                "addressLine1": "192 Park Street",
-                "addressLine2": "Street 24",
-                "city": "Atlanta",
-                "pin": "30305"
-            },
-            "products": {
-                "_id": "101",
-                "productName": "Charger",
-                "imageUrl": "AAA",
-                "quantity": 2,
-                "price": 1000
-            },
-            "courierInfo": {
-                "courierName": "Fedex",
-                "trackingNumber": "123456"
-            },
-            "total": 2000,
-            "createdOn": "02/03/1988"
-        }
+        
         const order = new Order(req.body);
         Order.create(order, (err: Errback, result: any) => {
             if (err) {
