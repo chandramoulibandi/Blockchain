@@ -6,8 +6,9 @@ import { Order } from '../models/Order';
 export class OrderController {
 
     static placeOrder(req: Request, res: Response, next: NextFunction) {
-        req.body=`{"userId":"620fd1151f18076f912503d1","shippingAddress":{"addressLine1":"192 Park Street","addressLine2":"Street 24","city":"Atlanta","pin":"30305"},"products":{"_id":"101","productName":"Laptop","imageUrl":"AAA","quantity":2,"price":1000},"courierInfo":{"courierName":"Fedex","trackingNumber":"123456"},"total":2000,"createdOn":"02\/03\/1988"}`;
-        const order = new Order(req.body);
+        const data=`{"userId":"620fd1151f18076f912503d1","shippingAddress":{"addressLine1":"192 Park Street","addressLine2":"Street 24","city":"Atlanta","pin":"30305"},"products":{"_id":"101","productName":"Laptop","imageUrl":"AAA","quantity":2,"price":1000},"courierInfo":{"courierName":"Fedex","trackingNumber":"123456"},"total":2000,"createdOn":"02\/03\/1988"}`;
+        console.log(JSON.parse(data).todo);
+        const order = new Order(JSON.parse(data).todo);
         Order.create(order, (err: Errback, result: any) => {
             if (err) {
                 res.status(500).json({ status: 'failed', message: err })
