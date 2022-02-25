@@ -7,7 +7,7 @@ export class OrderController {
 
     static placeOrder(req: Request, res: Response, next: NextFunction) {
      
-    
+        console.log(req.body);
         req.body ={
             "userId": "620fd1151f18076f912503d1",
             "shippingAddress": {
