@@ -12,29 +12,36 @@ export class UserController {
       if (err) {
         res.status(500).json({ status: "failed", message: err });
       } else {
-        if (result != undefined) {
-          if (compareSync(req.body.password, result.password)) {
-            const token = sign({ id: result._id }, "TESTKEY", {
-              expiresIn: "1h",
-            });
-            res.json({
-              status: "Success",
-              message: "Login Succuss!",
-              data: token,
-            });
-          } else {
-            res.json({
-              status: "failed",
-              message: "UserName and Password is incorrect!",
-            });
-          }
-        } else {
-          res.json({
-            status: "failed",
-            message: "UserName and Password is incorrect!",
-          });
-        }
+        res.json({
+          status: "Success",
+          message: "Login Succuss!",
+          data: result,
+        });
       }
+      // else {
+      //   if (result != undefined) {
+      //     if (compareSync(req.body.password, result.password)) {
+      //       const token = sign({ id: result._id }, "TESTKEY", {
+      //         expiresIn: "1h",
+      //       });
+      //       res.json({
+      //         status: "Success",
+      //         message: "Login Succuss!",
+      //         data: token,
+      //       });
+      //     } else {
+      //       res.json({
+      //         status: "failed",
+      //         message: "UserName and Password is incorrect!",
+      //       });
+      //     }
+      //   } else {
+      //     res.json({
+      //       status: "failed",
+      //       message: "UserName and Password is incorrect!",
+      //     });
+      //   }
+      // }
     });
   }
 
@@ -54,7 +61,6 @@ export class UserController {
   }
 
   static updateProfile(req: Request, res: Response, next: NextFunction) {
-   
     const userid = req.body.userId;
     User.findByIdAndUpdate(
       userid,
