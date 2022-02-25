@@ -1,7 +1,5 @@
 import { ProductController } from "../controllers/productController";
 import * as express from "express";
-import { validateUser } from '../middleware/auth';
-
 
 export const productRoute = express.Router();
 

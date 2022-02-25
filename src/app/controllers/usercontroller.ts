@@ -86,7 +86,7 @@ export class UserController {
       if (err) {
         res.status(500).json({ status: "failed", message: err });
       } else {
-        console.log(result);
+        //console.log(result);
         res.json({
           status: "Success",
           message: "Profile Updated !",
